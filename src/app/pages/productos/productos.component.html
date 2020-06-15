@@ -1,0 +1,65 @@
+  
+ 
+
+<header >
+
+    <div class="ladoDerecho">
+        <h3 class="card-title texto" style="color: rgb(28, 153, 153); margin: 30px;">Productos registrados ( <span>{{totalRegistro}}</span> )</h3> 
+      <div class="row">
+        <div  class="col-sm-6 col-md-6 col-lg-3	col-xl-3  card estilo-tarjeta " *ngFor="let producto of productos"  >
+          <div>
+            <h5 class="text-titulo">{{producto.nombre}}</h5>
+            <img *ngIf="!producto.img" class="img" src="assets/img/nophoto.jpg" alt="">
+            <img *ngIf="producto.img" class="img" src="http://localhost/imgcatalogo/productos/{{producto.img}}" alt="">
+            <p class="text-descripcion" >{{producto.descripcion}}</p>
+            <hr>
+            <p class="texto"  ><span  >Credito: </span> {{producto.credito  | currency:'$'}}</p>
+            <hr>
+            <p class="texto"   ><span  >Display: </span>  {{producto.display | currency:'$'}}</p>
+            <hr>
+            <p class="texto"  ><span  >Unidad: </span> {{producto.unidad | currency:'$'}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="padding" style="margin-bottom: 80px;">
+        <div style=" float: right;  margin-top: 20px; margin-right: 60px;">
+          <nav aria-label="Page navigation example">
+        
+            <button class="btn btn-secondary " style="margin: 10px;" (click)="paginacionDesde(-12)">
+              Anteriores
+            </button>
+          
+            <button class="btn btn-secondary" style="margin: 10px;" (click)="paginacionDesde(12)">
+              Siguientes
+            </button>
+          </nav>
+        </div>
+      </div>
+     
+    </div>
+    <div class="ladoIzquierdo">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item text-izquierdo">
+          <input class="form-control" type="text" #input (keyup)="buscaproductos(input.value) " placeholder="Buscar producto..." aria-label="Search" >
+        </li>
+        
+        <li class="list-group-item text-izquierdo" (click)= "verLineas()" style="cursor: pointer;">
+          Ver Lineas
+        </li>
+
+      </ul>
+    </div>
+  
+    
+      
+  
+  </header>
+  
+ 
+  
+  
+  
+
+  
+  
+  

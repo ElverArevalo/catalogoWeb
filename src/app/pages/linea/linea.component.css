@@ -1,0 +1,82 @@
+
+  header {
+      padding: 20px;
+  }
+  .text-titulo{
+    font-size: 1.5em;
+  }
+  .text-descripcion {
+    font-size: 1em;
+  }
+  .ladoDerecho {
+      background-color:rgb(241, 232, 232);
+      width: 80%;
+      float: right;
+      padding: 1em 2em;
+      box-sizing: border-box;
+  }
+  .ladoIzquierdo {
+      background-color: rgb(245, 241, 239);
+      width: 20%;
+      float: left;
+      padding: 1em 2em;
+      height: auto;
+      box-sizing: border-box;
+  }
+.estilo-tarjeta {
+  cursor: pointer;
+ padding: 20px;
+}
+.estilo-tarjeta:hover {
+border:2px solid #dae1e4;
+
+}
+
+  .img{
+    width: 100%; height: 250px;
+  }
+
+  @media screen and (min-width: 780px) and (max-width:1024px){
+
+ 
+}
+@media screen and (min-width: 480px) and (max-width:780px){
+  
+    .ladoDerecho{
+       width: 70%;
+      
+   }
+   .ladoIzquierdo{
+     width: 30%;
+    font-size: 0.7em;
+   }
+   .text-titulo{
+     font-size: 10px;
+   }
+   .text-descripcion{
+    font-size: 10px;
+   }
+   .img{
+    width: 100%; height: 200px;
+  }
+  .text-izquierdo{
+    font-size: 10px;
+    
+  }
+}
+@media screen and (max-width:  480px) {
+   
+     .ladoDerecho {
+        width: 100%;
+       
+    }
+    .ladoIzquierdo {
+      display:none;
+    }
+    .img{
+      width: 100%; height: 200px;
+    }
+   
+    
+   
+}

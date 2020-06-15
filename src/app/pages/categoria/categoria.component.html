@@ -1,0 +1,54 @@
+
+
+
+<header>
+    <div class="ladoDerecho">
+      <h3 class="card-title texto" style="color: rgb(28, 153, 153); margin: 30px;">Categorias registradas ( <span>{{totalRegistro}}</span> )</h3>
+      <div class="row">
+        <div  class="col-sm-6 col-md-6 col-lg-3	col-xl-3  card estilo-tarjeta " *ngFor="let categoria of categorias"  style="cursor: pointer" [routerLink]="['/producto', categoria._id]">
+          <div>
+            <h5 class="text-titulo">{{categoria.nombre}}</h5>
+           
+            <p class="text-descripcion" >{{categoria.descripcion}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="padding" style="margin-bottom: 80px;">
+        <div style=" float: right;  margin-top: 20px; margin-right: 60px;">
+          <nav aria-label="Page navigation example">
+        
+            <button class="btn btn-secondary " style="margin: 10px;" (click)="paginacionDesde(-12)">
+              Anteriores
+            </button>
+          
+            <button class="btn btn-secondary" style="margin: 10px;" (click)="paginacionDesde(12)">
+              Siguientes
+            </button>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div class="ladoIzquierdo">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item text-izquierdo">
+          <input class="form-control" type="text" #input (keyup)="buscarCategoria(input.value) " placeholder="Buscar categoria..." aria-label="Search" >
+        </li>
+        
+        <li class="list-group-item text-izquierdo" (click)= "verProductos()" style="cursor: pointer;">
+          Ver todos los productos
+        </li>
+    
+     
+      </ul>
+    </div>
+  </header>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

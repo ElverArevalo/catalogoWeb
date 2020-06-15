@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "catalogoWeb"
+    }
+  },
+  "defaultProject": "catalogoWeb",
+  "cli": {
+    "analytics": false
+  }
 }
