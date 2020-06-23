@@ -70,6 +70,13 @@ border:2px solid #dae1e4;
         width: 100%;
        
     }
+    .texto {
+      font-size:12px;
+    }
+    .ocultar-busqueda {
+      width: 100%;
+      display: block;
+  }
     .ladoIzquierdo {
       display:none;
     }

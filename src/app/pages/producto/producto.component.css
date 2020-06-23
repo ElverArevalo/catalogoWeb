@@ -74,6 +74,13 @@ span {
       width: 100%;
      
   }
+  .texto {
+    font-size:12px;
+  }
+  .ocultar-busqueda {
+    width: 100%;
+    display: block;
+}
   .ladoIzquierdo {
     display:none;
   }
