@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { LineaService } from 'src/app/services/linea.service';
 import { Router } from '@angular/router';
 
+import {NgxSpinnerService} from 'ngx-spinner';
+
+
 @Component({
   selector: 'app-linea',
   templateUrl: './linea.component.html',
@@ -13,15 +16,24 @@ export class LineaComponent implements OnInit {
   totalRegistro: number = 0;
   
   constructor(public serviceLinea: LineaService,
-    public router:Router) { }
+    public router:Router,
+    private spinnerService: NgxSpinnerService) { }
 
   ngOnInit(): void {
+    this.spinner();
     this.cargarLinea();
+  }
+
+  spinner() {
+    this.spinnerService.show();
+    setTimeout(() => {
+        this.spinnerService.hide();
+    },2000);
   }
   cargarLinea(){
     this.serviceLinea.cargarLinea(this.desde)
     .subscribe((resp)=> {
-
+      this.spinner();
       this.lineas = resp;
       this.totalRegistro = this.serviceLinea.totalLinea
      });
@@ -40,10 +52,11 @@ export class LineaComponent implements OnInit {
       return;
     }
     this.desde = desde;
+    this.spinner();
     this.cargarLinea();
   }
   buscarLinea( termino: string ) {
-
+    
     if (termino.trim() == "") {
       this.cargarLinea();
     return;

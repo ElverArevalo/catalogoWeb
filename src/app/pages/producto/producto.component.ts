@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductoService } from 'src/app/services/producto.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-producto',
@@ -14,9 +15,11 @@ export class ProductoComponent implements OnInit {
   totalRegistro;
   constructor(public routerActive: ActivatedRoute,
     public serviceProducto: ProductoService,
-    public router: Router) { }
+    public router: Router,
+    private spinnerService: NgxSpinnerService) { }
 
   ngOnInit(): void {
+    this.spinner();
     this.routerActive.params.subscribe(
       params => {
         this.categoriaId = params['id'];
@@ -25,10 +28,18 @@ export class ProductoComponent implements OnInit {
       }
     );
     this.cargarProducto();
+  } 
+  spinner() {
+    this.spinnerService.show();
+    setTimeout(() => {
+        this.spinnerService.hide();
+    },2000);
   }
+  
   cargarProducto(){
     this.serviceProducto.cargaProducto( this.categoriaId , this.desde)
     .subscribe((resp:any) => {
+      this.spinner();
       this.productos = resp;
       this.totalRegistro = this.serviceProducto.totalProducto;
     });
@@ -47,6 +58,7 @@ export class ProductoComponent implements OnInit {
     }
     this.desde = desde;
     console.log(this.desde);
+    this.spinner();
     this.cargarProducto();
   }
 

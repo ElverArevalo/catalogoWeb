@@ -15,6 +15,7 @@ import { LineaService } from './services/linea.service';
 import { CategoriaService } from './services/categoria.service';
 import { ProductoService } from './services/producto.service';
 import { ProductosService } from './services/productos.service';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ProductosService } from './services/productos.service';
     AppRoutingModule,
     RoutingModule,
     HttpClientModule,
+    NgxSpinnerModule
   
   ],
   providers: [LineaService,

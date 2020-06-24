@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CategoriaService } from 'src/app/services/categoria.service';
-
+import {NgxSpinnerService} from 'ngx-spinner';
 @Component({
   selector: 'app-categoria',
   templateUrl: './categoria.component.html',
@@ -15,10 +15,11 @@ totalRegistro:number;
 
   constructor(public routerActive: ActivatedRoute, 
     public serviceCategoria: CategoriaService,
-    public router: Router) { }
+    public router: Router,
+    private spinnerService: NgxSpinnerService) { }
 
   ngOnInit(): void {
- 
+    this.spinner();
     this.routerActive.params.subscribe(
       params => {
         this.lineaId = params['id'];
@@ -28,10 +29,17 @@ totalRegistro:number;
     );
     this.cargarCategoria();
   }
+  spinner() {
+    this.spinnerService.show();
+    setTimeout(() => {
+        this.spinnerService.hide();
+    },2000);
+  }
 
   cargarCategoria() {
     this.serviceCategoria.cargaCategoria(this.lineaId, this.desde)
     .subscribe((resp:any) =>{
+      this.spinner();
       this.categorias= resp;
       this.totalRegistro= this.serviceCategoria.totalCategoria;
     })
@@ -50,6 +58,7 @@ totalRegistro:number;
       return;
     }
     this.desde = desde;
+    this.spinner();
     this.cargarCategoria();
   }
   buscarCategoria( termino: string ) {
@@ -68,6 +77,7 @@ totalRegistro:number;
   }
 
   verProductos() {
+    this.spinner();
     this.router.navigate(['/productos'])
 
   }
